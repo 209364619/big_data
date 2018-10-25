@@ -1,4 +1,4 @@
-package storm;
+package KafkaStorm;
 
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
@@ -10,9 +10,6 @@ import java.util.Map;
 
 public class MyKafkaBolt implements IBasicBolt {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
 

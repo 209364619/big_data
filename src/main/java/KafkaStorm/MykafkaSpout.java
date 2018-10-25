@@ -1,4 +1,4 @@
-package storm;
+package KafkaStorm;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
@@ -17,10 +17,6 @@ import java.util.List;
 
 public class MykafkaSpout {
 
-    /**
-     * @param args
-     * @throws
-     */
     public static void main(String[] args)  {
         // TODO Auto-generated method stub
 
@@ -29,17 +25,17 @@ public class MykafkaSpout {
         SpoutConfig spoutConfig = new SpoutConfig(zkHosts, topic,
                 "",
                 "MyTrack") ;
-        List<String> zkServers = new ArrayList<String>() ;
-        zkServers.add("192.168.1.231");
-        zkServers.add("192.168.1.232");
-        zkServers.add("192.168.1.233");
-        spoutConfig.zkServers = zkServers;
-        spoutConfig.zkPort = 2181;
+//        List<String> zkServers = new ArrayList<String>() ;
+//        zkServers.add("192.168.1.231");
+//        zkServers.add("192.168.1.232");
+//        zkServers.add("192.168.1.233");
+//        spoutConfig.zkServers = zkServers;
+//        spoutConfig.zkPort = 2181;
         spoutConfig.socketTimeoutMs = 60 * 1000 ;
         spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme()) ;
 
         TopologyBuilder builder = new TopologyBuilder() ;
-        builder.setSpout("spout", new KafkaSpout(spoutConfig) ,1) ;
+        builder.setSpout("spout", new KafkaS pout(spoutConfig) ,1) ;
         builder.setBolt("bolt1", new MyKafkaBolt(), 1).shuffleGrouping("spout") ;
 
         Config conf = new Config ();
